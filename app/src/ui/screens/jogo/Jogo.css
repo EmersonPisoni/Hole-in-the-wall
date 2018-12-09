@@ -1,0 +1,259 @@
+.selecao-dificuldade-formulario {
+    position: relative;
+    left: 13%;
+}
+
+.jogar-botao {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: -129%;
+    bottom: 17%;
+}
+
+.cadastro-voltar {
+    position: absolute;
+    left: -10%;
+    bottom: -100%;
+}
+
+.jogo-titulo {
+    font-family: 'Montserrat', sans-serif;
+    color: #AD756C;
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 0;
+}
+
+.partida {
+    background-image: url(../../../assets/partida.png);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.partida-muro {
+    background-image: url(../../../assets/muro.png);
+    background-size: 100% 100%;
+    width: 10%;
+    height: 10%;
+    display: flex;
+    top: 38%;
+    left: 45%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+.partida-muro-stick {
+    width: 79%;
+    height: 98%;
+    mix-blend-mode: screen;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(240, 248, 255, 0)
+}
+
+.partida-muro-animacao {
+    transition-duration: 10s;
+    transform: translateY(23%);
+    transition-timing-function: linear;
+    width: 50%;
+    height: 50%;
+    left: 26%;
+}
+
+.partida-muro-punk {
+    background-image: url(../../../assets/punk.gif);
+    background-size: 150% 250%;
+    background-repeat: no-repeat;
+    background-position-y: 36%;
+    background-position-x: center;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.tamanho-muro {
+    width: 70%;
+    margin: 10px 10px 10px 20px;
+}
+
+.div-score {
+    background-image: url(./../../../assets/hole.svg);
+    height: 35%;
+    width: 820px;
+    background-size: 35%;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -8%;
+    left: -2%;
+}
+
+.radio-nivel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: #E9CCAB;
+    font-size: 200%;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    position: relative;
+    min-width: 270px;
+    margin-bottom: 12px;
+}
+
+.radio-nivel:first-child {
+    margin-top: 12px;
+}
+
+.radio-nivel:hover {
+    color: coral;
+    transform: scale(1.2);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: .4s;
+}
+
+.btn-img-punk {
+    display: none;
+    position: absolute;
+    right: 10%;
+}
+
+.btn-img-punk > img {
+    width: 55%;
+}
+
+.jogo-selecao-dificuldade input[type="radio"] {
+    display: none;
+}
+
+.jogo-selecao-dificuldade input[type="radio"]:checked + span {
+    color: coral;
+}
+
+.jogo-selecao-dificuldade input[type="radio"]:checked ~ .btn-img-punk {
+    display: block;
+}
+
+.sinaleira {
+    width: 2.6%;
+    height: 4.1%;
+    position: absolute;
+    z-index: 1;
+    border-radius: 45%;
+}
+
+.sinaleira-vermelha-1, .sinaleira-vermelha-2 {
+    background-color: rgb(255, 0, 0);
+    box-shadow: 0 0 60px 30px #ff000028, 0 0 100px 60px #ff000028, 0 0 140px 90px #ff000028;
+}
+
+.sinaleira-vermelha-1 {
+    top: 20.2%;
+    left: 29.2%;
+}
+
+.sinaleira-vermelha-2 {
+    top: 21.2%;
+    left: 68.1%;
+}
+
+.sinaleira-amarela-1, .sinaleira-amarela-2 {
+    background-color: yellow;
+    box-shadow: 0 0 60px 30px #fffb0050, 0 0 100px 60px #fffb0050, 0 0 140px 90px #fffb0050;
+}
+
+.sinaleira-amarela-1 {
+    top: 25.3%;
+    left: 29.2%;
+}
+
+.sinaleira-amarela-2 {
+    top: 26.2%;
+    left: 68%;
+}
+
+.sinaleira-verde-1, .sinaleira-verde-2 {
+    background-color: rgb(89, 255, 47);
+    box-shadow: 0 0 60px 30px #33ff002f, 0 0 100px 60px #33ff002f, 0 0 140px 90px #33ff002f;
+}
+
+.sinaleira-verde-1 {
+    top: 30.3%;
+    left: 29.3%;
+}
+
+.sinaleira-verde-2 {
+    top: 31.2%;
+    left: 68%;
+}
+
+.tutorial-botao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: -127%;
+    bottom: -20%;
+}
+
+.logout-botao {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 94%;
+    bottom: -18%;
+}
+
+.logout-botao button {
+    padding: 22px 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-botao Button img {
+    width: 42px;
+}
+
+.tutorial {
+    background-image: url(../../../assets/tutorial.png);
+    background-size: 100%;
+    height: 100%;
+    background-color: #2A2A2A;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tutorial-botao-tela {
+    height: 14%;
+    position: absolute;
+    right: 100px;
+    bottom: 44px;
+    margin: 0;
+}
+
+video {
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+    width: 20%;
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    border-radius: 3%;
+}

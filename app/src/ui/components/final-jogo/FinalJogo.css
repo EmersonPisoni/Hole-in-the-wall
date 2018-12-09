@@ -1,0 +1,130 @@
+.container-muro-tela-final {
+    background-image: url(../../../assets/muro_cortado.png);
+    background-repeat: repeat;
+    background-size: 55%;
+    height: 100%;
+    display: flex;
+    width: 40vw;
+    position: relative;
+    flex-direction: column;
+    transform: translateX(100%);
+    animation: init-muro-tela-final .5s 1s ease-out forwards;
+}
+
+.buraco-tela-final {
+    background-image: url(../../../assets/hole.svg);
+    width: 100%;
+    background-size: 112%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container-final-jogo {
+    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    position: absolute;
+}
+
+.div-gif-final-jogo {
+    width: 60vw;
+    height: 100%;
+    background: url(../../../assets/joselito.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: translateX(-100%);
+    animation: init-muro-joselito .5s 1s ease-out forwards;
+}
+
+.final-jogo-botoes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    height: 72%;
+    margin: 0px 0px 20% 0px;
+}
+
+.div-score p {
+    color: #E9CCAB;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    transform: rotate(-10deg);
+    padding-top: 55px;
+    text-align: center;
+    font-weight: bold;
+    width: 33%;
+}
+
+.botao-score {
+    background: #8b3a31;
+    border-radius: 10px;
+    color: #E9CCAB;
+    font-size: 38px;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: inset 0 10px 0 rgba(255, 255, 255, 0.2), -3px 5px 5px rgba(0, 0, 0, 0.2);
+    transform: rotate(-10deg);
+    width: 235px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.final-jogo-gif {
+    width: 100%;
+}
+
+.ranking-tamanho {
+    margin-right: 40px;
+}
+
+#scroll-ranking::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+    background: rgba(196, 196, 196, 0.3);
+}
+
+#scroll-ranking::-webkit-scrollbar {
+    width: 9px;
+}
+
+#scroll-ranking::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background: rgba(196, 196, 196, 0.3);
+}
+
+.div-container-ranking {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 22px;
+    color: #E9CCAB;
+    height: 34%;
+}
+
+@keyframes init-muro-tela-final {
+    to {
+        transform: translateX(0)
+    }
+}
+
+@keyframes init-muro-joselito {
+    to {
+        transform: translateX(0)
+    }
+}
+
+@media (max-height: 657px) {
+    .final-jogo-botoes {
+        margin: 0px 0px 11% 0px;
+        height: 60%;
+    }
+}

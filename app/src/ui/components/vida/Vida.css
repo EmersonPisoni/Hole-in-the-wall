@@ -1,0 +1,19 @@
+.coracao {
+    position: absolute;
+    top: 10%;
+    align-items: center;
+    justify-content: flex-end;
+    right: 15%;
+    width: 20%;
+    height: 10%;
+    display: flex;
+}
+
+.coracao-item {
+    background-image: url(../../../assets/coracao.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 25%;
+    height: 100%;
+}

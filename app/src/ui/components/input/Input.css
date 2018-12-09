@@ -1,0 +1,27 @@
+.input-campo {
+    display: flex;
+    width: 235px;
+    height: 40px;
+    padding-left: 15px;
+    margin: 4px 0;
+    border-radius: 11px;
+    outline: 0;
+    border: none;
+}
+
+.input-grupo {
+    position: relative;
+}
+
+.input-checagem {
+    position: absolute;
+    height: 10px;
+    top: 50%;
+    margin-top: -5px;
+    right: 10px;
+}
+
+.input-erro {
+    font-size: 13px;
+    color: #8b3a31;
+}

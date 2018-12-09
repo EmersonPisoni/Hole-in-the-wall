@@ -1,0 +1,38 @@
+.cadastro-container-formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cadastro-formulario {
+    position: relative;
+}
+
+.cadastro-botoes {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: -100%;
+}
+
+.cadastro .cadastro-botoes {
+    top: 77%;
+}
+
+.cadastro-voltar {
+    position: absolute;
+    left: -10%;
+    bottom: -100%;
+}
+
+.cadastro-titulo {
+    margin-top: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: #E9CCAB;
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 0;
+    text-align: center;
+}

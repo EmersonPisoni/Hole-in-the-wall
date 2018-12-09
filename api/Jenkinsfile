@@ -1,0 +1,102 @@
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), disableConcurrentBuilds(), pipelineTriggers([])])
+
+stage('Evaluating') {
+    
+    switch(env.BRANCH_NAME) {
+        case "master":  env_type = "production"; break;
+        default:        env_type = "undefined";  break;
+    }
+
+    discord_webhook = "https://discordapp.com/api/webhooks/514501179149910019/y-pwSsU06FTCuun_7ZdC01pmBUzziOrBOjqIY1z6W3Ir8eDN74GFjjobGaQTBziiT94c"
+    env_is_defined = "$env_type" != "undefined"
+    currentBuild.result = 'SUCCESS'
+}
+
+// App settings
+def app_name = "hole-in-the-wall-api"
+def acess_port = "9088:80"
+def tag = "crescer/${app_name}"
+def docker_image = "${app_name}.tar"
+
+try {
+    node('master') {
+        
+        stage('Checkout') {
+            checkout scm
+            commiter = sh(returnStdout: true, script: "git show -s --pretty=%an").trim()
+        }
+
+        docker.image('maven:3.6.0-jdk-8-alpine').inside('-v /var/lib/jenkins/.m2:/root/.m2 -u root') {
+            
+            withEnv(['_JAVA_OPTIONS=-Djdk.net.URLClassPath.disableClassPathURLCheck=true']) {
+                
+                stage('QA') {
+                    dir ("api") {
+                        sh "mvn -B -U clean test"
+                    }
+                }
+
+                stage('Sonar') {
+                    dir ("api") {
+                        if(env_is_defined) {
+                            withCredentials([string(credentialsId: 'sonar-token', variable: 'TOKEN')]) {
+                                sh "mvn -B -U clean verify sonar:sonar -fn \
+                                        -Dsonar.login=${TOKEN} \
+                                        -Dsonar.host.url='http://10.99.220.130:9000'"
+                            }
+                        } else {
+                            echo "Esse step só executa em branches que são publicadas..."
+                        }
+                    }
+                }
+
+                stage('Package') {
+                    dir ("api") {
+                        sh "mvn -B -U clean package -Dmaven.test.skip=true"
+                    }
+                }
+            }
+        }
+    }
+
+    if(env_is_defined) {
+
+        node("master") {
+            
+            stage('Build Image') {
+                dir("api") {
+                    sh "docker build --tag $tag ."
+                }
+            }
+
+            stage('Deploy Service') {
+                sh "docker save $tag > $docker_image"
+                stash includes: docker_image, name: app_name
+            }
+
+            node("producao") {
+
+                stage('Remove Service') {
+                    sh "docker rm -f $app_name | true"
+                }
+
+                stage('Start Service') {
+                    unstash app_name
+                    sh "docker load < $docker_image"
+                    sh """docker run \
+                            --name $app_name \
+                            -p $acess_port \
+                            -d $tag"""
+                }
+            }
+
+            stage('Send Notification') {
+                discordSend description: 'O build da nova versão do app ta na mão!', footer: 'Tomara que funcione', link: env.RUN_DISPLAY_URL, successful: true, title: JOB_NAME, webhookURL: discord_webhook
+            }
+        }
+    }
+} catch (Exception err) {
+    echo "Build Failed: ${err}"
+    currentBuild.result = 'FAILURE'
+    discordSend description: 'Não consegue né?', footer: 'https://media.giphy.com/media/KZA5YeZ73na/giphy.gif', link: env.RUN_DISPLAY_URL, successful: false, title: JOB_NAME, webhookURL: discord_webhook
+}

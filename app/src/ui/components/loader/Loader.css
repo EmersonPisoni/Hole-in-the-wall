@@ -1,0 +1,20 @@
+.loader-container {
+    background: #222222a8;
+    z-index: 10000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.loader-titulo {
+    font-family: 'Montserrat', sans-serif;
+    color: #E9CCAB;
+    font-weight: bold;
+    font-size: 38px;
+    margin-right: 12px;
+}

@@ -1,0 +1,7 @@
+export default {
+
+    APELIDO_JA_EXISTE: 1520,
+    EMAIL_JA_EXISTE: 1521,
+    USUARIO_OU_SENHA_INVALIDOS: 1522
+
+}

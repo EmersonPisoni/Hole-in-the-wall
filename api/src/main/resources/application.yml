@@ -1,0 +1,27 @@
+server:
+  port: 8100
+  servlet:
+    context-path: /hole-in-the-wall
+
+security:
+  jwt:
+    secret: "crescer-2018-2-java-jwt"
+    expiration: 86400000 # 1 dia em milisegundos
+  public:
+    path: "/public/**"
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:oracle:thin:@10.99.220.232:1521:odev
+    username: HITW
+    password: HITW
+    driver-class-name: oracle.jdbc.OracleDriver
